@@ -1,0 +1,809 @@
+{
+  "version": "1.0",
+  "engine": {
+    "strategy": "forward_chaining",
+    "conflict_resolution": "highest_salience_then_specificity_then_order",
+    "max_cycles": 60,
+    "description": "Rules are declarative IF-THEN productions. Conditions are ANDed. Rules fire once. Derived facts feed later rules, which is what produces a visible forward-chaining trace."
+  },
+  "rules": [
+    {
+      "id": "A01",
+      "title": "Sadness is present",
+      "category": "evidence_to_state",
+      "salience": 80,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:sadness", "label": "You described sadness or low mood"}
+      ],
+      "then": [{"type": "assert", "fact": "state:low_mood"}],
+      "why": "Sadness on its own is enough to plan gentle, mood-supportive options. It is not treated as a diagnosis."
+    },
+    {
+      "id": "A02",
+      "title": "Sadness has persisted for weeks or longer",
+      "category": "evidence_to_state",
+      "salience": 85,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:sadness", "label": "You described sadness"},
+        {"kind": "attr", "key": "duration", "op": "in", "value": ["weeks", "months", "long_term"], "label": "It has lasted weeks or longer"}
+      ],
+      "then": [{"type": "assert", "fact": "state:persistent_low_mood"}],
+      "why": "Duration changes the support plan: persistent low mood calls for a steadier routine and a lower threshold for professional advice."
+    },
+    {
+      "id": "A03",
+      "title": "Anxiety is causing arousal",
+      "category": "evidence_to_state",
+      "salience": 82,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:anxiety", "label": "You described anxiety or worry"},
+        {"kind": "attr", "key": "distress", "op": "in", "value": ["moderate", "high"], "label": "It is moderately or strongly distressing"}
+      ],
+      "then": [{"type": "assert", "fact": "state:anxious_activation"}],
+      "why": "Moderate-to-high anxiety responds first to settling the body, before problem-solving."
+    },
+    {
+      "id": "A04",
+      "title": "Panic-like activation",
+      "category": "evidence_to_state",
+      "salience": 96,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:panic", "label": "You described panic or sudden intense fear"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "state:panic_activation"},
+        {"type": "advice", "value": "Panic can feel alarming in the body. If this is new chest pain or breathing difficulty, seek medical care; otherwise a slow, gentle grounding exercise is a reasonable first step."}
+      ],
+      "why": "Panic is given near-top priority because the body feels unsafe even when there is no immediate danger."
+    },
+    {
+      "id": "A05",
+      "title": "Stress is creating load",
+      "category": "evidence_to_state",
+      "salience": 76,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:stress", "label": "You described stress or pressure"}
+      ],
+      "then": [{"type": "assert", "fact": "state:stress_load"}],
+      "why": "Stress is framed as load to manage, not as a personal failing."
+    },
+    {
+      "id": "A06",
+      "title": "Overwhelm is present",
+      "category": "evidence_to_state",
+      "salience": 84,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:overwhelm", "label": "You described feeling overwhelmed"}
+      ],
+      "then": [{"type": "assert", "fact": "state:overwhelm"}],
+      "why": "Overwhelm needs a smaller scope before any productivity suggestion."
+    },
+    {
+      "id": "A07",
+      "title": "Loneliness is present",
+      "category": "evidence_to_state",
+      "salience": 78,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:loneliness", "label": "You described loneliness"}
+      ],
+      "then": [{"type": "assert", "fact": "state:social_withdrawal"}],
+      "why": "Loneliness is treated as a connection need, not something to 'get over'."
+    },
+    {
+      "id": "A08",
+      "title": "Loneliness with little support",
+      "category": "evidence_to_state",
+      "salience": 86,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:loneliness", "label": "You described loneliness"},
+        {"kind": "attr", "key": "support", "op": "in", "value": ["isolated", "limited"], "label": "You have little or no one to talk to"}
+      ],
+      "then": [{"type": "assert", "fact": "state:high_isolation"}],
+      "why": "Limited support changes the plan: the app should not assume a friend is available and should include helplines as a real option."
+    },
+    {
+      "id": "A09",
+      "title": "Reported sleep difficulty",
+      "category": "evidence_to_state",
+      "salience": 80,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:sleep_difficulty", "label": "You described sleep difficulties"}
+      ],
+      "then": [{"type": "assert", "fact": "state:sleep_debt"}],
+      "why": "Sleep is treated as a foundation habit that affects mood and energy."
+    },
+    {
+      "id": "A10",
+      "title": "Sleep duration is low",
+      "category": "evidence_to_state",
+      "salience": 85,
+      "conditions": [
+        {"kind": "attr", "key": "sleep_hours", "op": "lt", "value": 6, "label": "You are sleeping less than 6 hours"}
+      ],
+      "then": [{"type": "assert", "fact": "state:sleep_debt"}],
+      "why": "Short sleep is a concrete, modifiable factor worth addressing gently."
+    },
+    {
+      "id": "A11",
+      "title": "Motivation deficit",
+      "category": "evidence_to_state",
+      "salience": 76,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:low_motivation", "label": "You described low motivation"}
+      ],
+      "then": [{"type": "assert", "fact": "state:motivation_deficit"}],
+      "why": "Low motivation is treated as depletion, not laziness."
+    },
+    {
+      "id": "A12",
+      "title": "Rumination or harsh self-talk",
+      "category": "evidence_to_state",
+      "salience": 78,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:negative_thinking", "label": "You described harsh self-talk or negative thinking"}
+      ],
+      "then": [{"type": "assert", "fact": "state:rumination"}],
+      "why": "Thinking patterns are addressed with gentle distance and self-compassion, not argument or forced positivity."
+    },
+    {
+      "id": "A13",
+      "title": "Anger activation",
+      "category": "evidence_to_state",
+      "salience": 78,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:anger", "label": "You described anger or frustration"}
+      ],
+      "then": [{"type": "assert", "fact": "state:anger_activation"}],
+      "why": "Anger gets a pause-and-release plan rather than suppression or judgement."
+    },
+    {
+      "id": "A14",
+      "title": "Grief process",
+      "category": "evidence_to_state",
+      "salience": 78,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:grief", "label": "You described grief or loss"}
+      ],
+      "then": [{"type": "assert", "fact": "state:grief_process"}],
+      "why": "Grief is not pathologised; the plan makes room for it and checks support."
+    },
+    {
+      "id": "A15",
+      "title": "Study or work overload",
+      "category": "evidence_to_state",
+      "salience": 76,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:academic_pressure", "label": "You described study or work pressure"}
+      ],
+      "then": [{"type": "assert", "fact": "state:study_overload"}],
+      "why": "Academic pressure is handled with structure and bounded effort, not more pressure."
+    },
+    {
+      "id": "A16",
+      "title": "Burnout risk",
+      "category": "evidence_to_state",
+      "salience": 82,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:burnout", "label": "You described emotional exhaustion"}
+      ],
+      "then": [{"type": "assert", "fact": "state:burnout_risk"}],
+      "why": "Exhaustion that rest has not fixed calls for recovery and load reduction, not optimisation."
+    },
+    {
+      "id": "A17",
+      "title": "Relationship strain",
+      "category": "evidence_to_state",
+      "salience": 74,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:relationship", "label": "You described a relationship difficulty"}
+      ],
+      "then": [{"type": "assert", "fact": "state:relationship_strain"}],
+      "why": "Relationship pain is acknowledged before any communication advice."
+    },
+    {
+      "id": "A18",
+      "title": "Social anxiety pattern",
+      "category": "evidence_to_state",
+      "salience": 78,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:social_anxiety", "label": "You described fear of social judgement"}
+      ],
+      "then": [{"type": "assert", "fact": "state:social_anxiety"}],
+      "why": "Social anxiety is met with small, voluntary steps and no forced exposure."
+    },
+    {
+      "id": "A19",
+      "title": "High self-reported distress",
+      "category": "evidence_to_state",
+      "salience": 88,
+      "conditions": [
+        {"kind": "attr", "key": "distress", "op": "eq", "value": "high", "label": "You described strong distress"}
+      ],
+      "then": [{"type": "assert", "fact": "state:high_distress"}],
+      "why": "High distress changes priority: comfort and safety come before activities."
+    },
+    {
+      "id": "A20",
+      "title": "Several concerns at once",
+      "category": "evidence_to_state",
+      "salience": 82,
+      "conditions": [
+        {"kind": "fact_count", "prefix": "concern:", "op": "gte", "value": 3, "label": "You named three or more separate concerns"}
+      ],
+      "then": [{"type": "assert", "fact": "state:multiple_concerns"}],
+      "why": "When several concerns overlap, a single small starting point is more useful than a long plan."
+    },
+    {
+      "id": "B01",
+      "title": "Low mood calls for behavioural activation",
+      "category": "state_to_need",
+      "salience": 70,
+      "conditions": [
+        {"kind": "fact", "fact": "state:low_mood", "label": "Low mood is established"}
+      ],
+      "then": [{"type": "assert", "fact": "need:behavioural_activation"}],
+      "why": "Small, value-guided action is a well-established self-help approach for low mood; the rule deliberately keeps actions tiny."
+    },
+    {
+      "id": "B02",
+      "title": "Persistent low mood needs a steadier plan",
+      "category": "state_to_need",
+      "salience": 80,
+      "conditions": [
+        {"kind": "fact", "fact": "state:persistent_low_mood", "label": "Low mood has persisted"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:behavioural_activation"},
+        {"type": "assert", "fact": "need:structure"},
+        {"type": "flag", "value": "professional_support"}
+      ],
+      "why": "When low mood persists, consistent routines help, and it is reasonable to have a professional conversation as well."
+    },
+    {
+      "id": "B03",
+      "title": "Anxious arousal needs grounding",
+      "category": "state_to_need",
+      "salience": 72,
+      "conditions": [
+        {"kind": "fact", "fact": "state:anxious_activation", "label": "Anxiety arousal is established"}
+      ],
+      "then": [{"type": "assert", "fact": "need:grounding"}],
+      "why": "Grounding is offered before cognitive work while the body is activated."
+    },
+    {
+      "id": "B04",
+      "title": "Panic needs immediate grounding",
+      "category": "state_to_need",
+      "salience": 92,
+      "conditions": [
+        {"kind": "fact", "fact": "state:panic_activation", "label": "Panic activation is established"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:grounding"},
+        {"type": "assert", "fact": "need:rest_and_recovery"}
+      ],
+      "why": "Panic is met first with a brief, concrete settling exercise."
+    },
+    {
+      "id": "B05",
+      "title": "Stress load needs rest and structure",
+      "category": "state_to_need",
+      "salience": 70,
+      "conditions": [
+        {"kind": "fact", "fact": "state:stress_load", "label": "Stress load is established"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:rest_and_recovery"},
+        {"type": "assert", "fact": "need:structure"}
+      ],
+      "why": "Stress often improves when both demand and recovery are addressed, not when the person simply tries harder."
+    },
+    {
+      "id": "B06",
+      "title": "Overwhelm needs a smaller scope",
+      "category": "state_to_need",
+      "salience": 75,
+      "conditions": [
+        {"kind": "fact", "fact": "state:overwhelm", "label": "Overwhelm is established"}
+      ],
+      "then": [{"type": "assert", "fact": "need:structure"}],
+      "why": "Reducing the next step to one concrete action is the safest response to feeling flooded."
+    },
+    {
+      "id": "B07",
+      "title": "Loneliness needs connection",
+      "category": "state_to_need",
+      "salience": 72,
+      "conditions": [
+        {"kind": "fact", "fact": "state:social_withdrawal", "label": "Loneliness is established"}
+      ],
+      "then": [{"type": "assert", "fact": "need:social_connection"}],
+      "why": "The plan should create one low-pressure point of contact, not demand a social overhaul."
+    },
+    {
+      "id": "B08",
+      "title": "High isolation needs support options",
+      "category": "state_to_need",
+      "salience": 82,
+      "conditions": [
+        {"kind": "fact", "fact": "state:high_isolation", "label": "You have little support available"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:social_connection"},
+        {"type": "flag", "value": "professional_support"}
+      ],
+      "why": "When a trusted person is not available, helplines and counsellors are legitimate sources of connection."
+    },
+    {
+      "id": "B09",
+      "title": "Sleep debt needs sleep support",
+      "category": "state_to_need",
+      "salience": 74,
+      "conditions": [
+        {"kind": "fact", "fact": "state:sleep_debt", "label": "Sleep debt is established"}
+      ],
+      "then": [{"type": "assert", "fact": "need:sleep_hygiene"}],
+      "why": "A small, repeatable wind-down is more realistic than a perfect sleep schedule."
+    },
+    {
+      "id": "B10",
+      "title": "Motivation deficit needs a tiny start",
+      "category": "state_to_need",
+      "salience": 68,
+      "conditions": [
+        {"kind": "fact", "fact": "state:motivation_deficit", "label": "Low motivation is established"}
+      ],
+      "then": [{"type": "assert", "fact": "need:behavioural_activation"}],
+      "why": "Action tends to come before motivation, so the suggested action is deliberately small."
+    },
+    {
+      "id": "B11",
+      "title": "Rumination needs a different relationship with thoughts",
+      "category": "state_to_need",
+      "salience": 70,
+      "conditions": [
+        {"kind": "fact", "fact": "state:rumination", "label": "Harsh self-talk or rumination is established"}
+      ],
+      "then": [{"type": "assert", "fact": "need:cognitive_reframing"}],
+      "why": "The aim is distance and fairness, not arguing someone out of their feelings."
+    },
+    {
+      "id": "B12",
+      "title": "Anger needs safe release",
+      "category": "state_to_need",
+      "salience": 68,
+      "conditions": [
+        {"kind": "fact", "fact": "state:anger_activation", "label": "Anger is established"}
+      ],
+      "then": [{"type": "assert", "fact": "need:emotional_release"}],
+      "why": "A pause protects the person and the people around them; release can come through words or movement."
+    },
+    {
+      "id": "B13",
+      "title": "Grief needs room and support",
+      "category": "state_to_need",
+      "salience": 68,
+      "conditions": [
+        {"kind": "fact", "fact": "state:grief_process", "label": "Grief is established"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:emotional_release"},
+        {"type": "assert", "fact": "need:social_connection"}
+      ],
+      "why": "Grief support should not rush the person toward 'moving on'."
+    },
+    {
+      "id": "B14",
+      "title": "Study overload needs structure",
+      "category": "state_to_need",
+      "salience": 66,
+      "conditions": [
+        {"kind": "fact", "fact": "state:study_overload", "label": "Study or work overload is established"}
+      ],
+      "then": [{"type": "assert", "fact": "need:structure"}],
+      "why": "One bounded focus block lowers the entry cost compared with a large plan."
+    },
+    {
+      "id": "B15",
+      "title": "Burnout needs recovery",
+      "category": "state_to_need",
+      "salience": 78,
+      "conditions": [
+        {"kind": "fact", "fact": "state:burnout_risk", "label": "Burnout risk is established"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:rest_and_recovery"},
+        {"type": "assert", "fact": "need:structure"},
+        {"type": "flag", "value": "professional_support"}
+      ],
+      "why": "Recovery and load reduction come before any suggestion to be more productive."
+    },
+    {
+      "id": "B16",
+      "title": "Relationship strain needs reflection and support",
+      "category": "state_to_need",
+      "salience": 62,
+      "conditions": [
+        {"kind": "fact", "fact": "state:relationship_strain", "label": "Relationship strain is established"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:emotional_release"},
+        {"type": "assert", "fact": "need:social_connection"}
+      ],
+      "why": "Naming what happened and staying connected to safe people are gentler than advice to confront anyone."
+    },
+    {
+      "id": "B17",
+      "title": "Social anxiety needs grounding and small steps",
+      "category": "state_to_need",
+      "salience": 66,
+      "conditions": [
+        {"kind": "fact", "fact": "state:social_anxiety", "label": "Social anxiety is established"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:grounding"},
+        {"type": "assert", "fact": "need:cognitive_reframing"}
+      ],
+      "why": "The plan combines settling the body with optional, very small social steps."
+    },
+    {
+      "id": "B18",
+      "title": "High distress prioritises comfort",
+      "category": "state_to_need",
+      "salience": 90,
+      "conditions": [
+        {"kind": "fact", "fact": "state:high_distress", "label": "High distress is established"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:grounding"},
+        {"type": "assert", "fact": "need:rest_and_recovery"}
+      ],
+      "why": "When distress is high, coping and rest come before reflection or tasks."
+    },
+    {
+      "id": "B19",
+      "title": "Multiple concerns call for one starting point",
+      "category": "state_to_need",
+      "salience": 80,
+      "conditions": [
+        {"kind": "fact", "fact": "state:multiple_concerns", "label": "Several concerns are present"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:structure"},
+        {"type": "flag", "value": "professional_support"}
+      ],
+      "why": "A professional can help hold the whole picture; the app should not try to solve everything at once."
+    },
+    {
+      "id": "C01",
+      "title": "Grounding options",
+      "category": "need_to_recommendation",
+      "salience": 60,
+      "conditions": [
+        {"kind": "fact", "fact": "need:grounding", "label": "Grounding need is established"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "box_breathing", "weight": 3},
+        {"type": "recommend", "recommendation": "grounding_54321", "weight": 2}
+      ],
+      "why": "Breathing and sensory grounding are brief, low-risk, and usable immediately."
+    },
+    {
+      "id": "C02",
+      "title": "Behavioural activation options",
+      "category": "need_to_recommendation",
+      "salience": 58,
+      "conditions": [
+        {"kind": "fact", "fact": "need:behavioural_activation", "label": "Behavioural activation need is established"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "walk_10", "weight": 3},
+        {"type": "recommend", "recommendation": "journaling_5", "weight": 1},
+        {"type": "recommend", "recommendation": "values_reflection", "weight": 1}
+      ],
+      "why": "The options create a small completed action without requiring motivation first."
+    },
+    {
+      "id": "C03",
+      "title": "Connection options",
+      "category": "need_to_recommendation",
+      "salience": 56,
+      "conditions": [
+        {"kind": "fact", "fact": "need:social_connection", "label": "Connection need is established"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "connect_friend", "weight": 3},
+        {"type": "recommend", "recommendation": "small_social_step", "weight": 1}
+      ],
+      "why": "One low-pressure message is easier to act on than 'be more social'."
+    },
+    {
+      "id": "C04",
+      "title": "Sleep support options",
+      "category": "need_to_recommendation",
+      "salience": 58,
+      "conditions": [
+        {"kind": "fact", "fact": "need:sleep_hygiene", "label": "Sleep support need is established"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "sleep_routine", "weight": 3},
+        {"type": "recommend", "recommendation": "limit_scroll", "weight": 1}
+      ],
+      "why": "A wind-down routine and a small screen boundary are practical sleep supports."
+    },
+    {
+      "id": "C05",
+      "title": "Reflection options for rumination",
+      "category": "need_to_recommendation",
+      "salience": 56,
+      "conditions": [
+        {"kind": "fact", "fact": "need:cognitive_reframing", "label": "Cognitive reframing need is established"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "journaling_5", "weight": 2},
+        {"type": "recommend", "recommendation": "self_compassion_note", "weight": 2},
+        {"type": "recommend", "recommendation": "worry_window", "weight": 1}
+      ],
+      "why": "Writing and a fairer inner sentence create distance without denying the feeling."
+    },
+    {
+      "id": "C06",
+      "title": "Rest and recovery options",
+      "category": "need_to_recommendation",
+      "salience": 56,
+      "conditions": [
+        {"kind": "fact", "fact": "need:rest_and_recovery", "label": "Rest need is established"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "micro_break", "weight": 3},
+        {"type": "recommend", "recommendation": "body_scan", "weight": 2},
+        {"type": "recommend", "recommendation": "read_10", "weight": 1}
+      ],
+      "why": "Recovery is treated as part of the plan, not a reward for finishing everything."
+    },
+    {
+      "id": "C07",
+      "title": "Structure options",
+      "category": "need_to_recommendation",
+      "salience": 54,
+      "conditions": [
+        {"kind": "fact", "fact": "need:structure", "label": "Structure need is established"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "plan_one_small_thing", "weight": 3},
+        {"type": "recommend", "recommendation": "study_25", "weight": 2},
+        {"type": "recommend", "recommendation": "tidy_space", "weight": 1}
+      ],
+      "why": "A single next step and a bounded block reduce overwhelm without adding pressure."
+    },
+    {
+      "id": "C08",
+      "title": "Emotional release options",
+      "category": "need_to_recommendation",
+      "salience": 54,
+      "conditions": [
+        {"kind": "fact", "fact": "need:emotional_release", "label": "Emotional release need is established"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "journaling_5", "weight": 2},
+        {"type": "recommend", "recommendation": "music_mood", "weight": 1},
+        {"type": "recommend", "recommendation": "anger_pause", "weight": 2}
+      ],
+      "why": "The options give strong feeling somewhere to go without harming anyone."
+    },
+    {
+      "id": "C09",
+      "title": "Professional support is an option",
+      "category": "need_to_recommendation",
+      "salience": 70,
+      "conditions": [
+        {"kind": "fact", "fact": "need:professional_support", "label": "Professional support has been indicated"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "professional_consult", "weight": 5},
+        {"type": "flag", "value": "professional_support"}
+      ],
+      "why": "A referral is offered as an additional option, never as proof that self-help failed."
+    },
+    {
+      "id": "C10",
+      "title": "Basic care when depleted",
+      "category": "need_to_recommendation",
+      "salience": 36,
+      "conditions": [
+        {"kind": "any", "facts": ["state:low_mood", "state:motivation_deficit", "state:burnout_risk"], "label": "You are depleted or low"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "hydration", "weight": 1},
+        {"type": "recommend", "recommendation": "sunlight", "weight": 1}
+      ],
+      "why": "Very small physical care steps are added only as low-ranked extras, so they never crowd out the main suggestion."
+    },
+    {
+      "id": "D01",
+      "title": "Low energy favours gentle options",
+      "category": "personalisation",
+      "salience": 35,
+      "conditions": [
+        {"kind": "attr", "key": "energy", "op": "eq", "value": "low", "label": "Your energy is very low"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "body_scan", "weight": 1},
+        {"type": "recommend", "recommendation": "hydration", "weight": 1}
+      ],
+      "why": "When energy is low, the app adds only low-effort options; it does not tell the person to try harder."
+    },
+    {
+      "id": "D02",
+      "title": "Little time available",
+      "category": "personalisation",
+      "salience": 40,
+      "conditions": [
+        {"kind": "attr", "key": "time_available", "op": "eq", "value": "low", "label": "You have very little time"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "micro_break", "weight": 2},
+        {"type": "recommend", "recommendation": "box_breathing", "weight": 1}
+      ],
+      "why": "Suggestions are sized to the time the user actually has."
+    },
+    {
+      "id": "D03",
+      "title": "Preference for outdoors or movement",
+      "category": "personalisation",
+      "salience": 38,
+      "conditions": [
+        {"kind": "attr", "key": "preferences", "op": "contains", "value": "outdoors", "label": "You like being outdoors"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "walk_10", "weight": 2},
+        {"type": "recommend", "recommendation": "sunlight", "weight": 2}
+      ],
+      "why": "Recommendations are matched to activities the person already values."
+    },
+    {
+      "id": "D04",
+      "title": "Preference for social contact",
+      "category": "personalisation",
+      "salience": 38,
+      "conditions": [
+        {"kind": "attr", "key": "preferences", "op": "contains", "value": "social", "label": "You value talking with people"}
+      ],
+      "then": [{"type": "recommend", "recommendation": "connect_friend", "weight": 2}],
+      "why": "A preferred channel makes follow-through easier."
+    },
+    {
+      "id": "D05",
+      "title": "Preference for quiet activities",
+      "category": "personalisation",
+      "salience": 36,
+      "conditions": [
+        {"kind": "attr", "key": "preferences", "op": "contains", "value": "quiet", "label": "You prefer quiet activities"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "journaling_5", "weight": 1},
+        {"type": "recommend", "recommendation": "read_10", "weight": 1}
+      ],
+      "why": "Quiet options are added when they fit the person's stated preference."
+    },
+    {
+      "id": "D06",
+      "title": "Preference for creative expression",
+      "category": "personalisation",
+      "salience": 36,
+      "conditions": [
+        {"kind": "attr", "key": "preferences", "op": "contains", "value": "creative", "label": "You enjoy creative expression"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "journaling_5", "weight": 1},
+        {"type": "recommend", "recommendation": "music_mood", "weight": 1}
+      ],
+      "why": "Creative options are offered when the person already uses them."
+    },
+    {
+      "id": "D07",
+      "title": "Limited support changes connection options",
+      "category": "personalisation",
+      "salience": 45,
+      "conditions": [
+        {"kind": "attr", "key": "support", "op": "in", "value": ["isolated", "limited"], "label": "You have limited support"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "connect_friend", "weight": 1},
+        {"type": "recommend", "recommendation": "professional_consult", "weight": 1}
+      ],
+      "why": "The plan does not assume a friend is available, and includes formal support as a real option."
+    },
+    {
+      "id": "D08",
+      "title": "Anxiety plus sleep debt",
+      "category": "personalisation",
+      "salience": 48,
+      "conditions": [
+        {"kind": "fact", "fact": "state:anxious_activation", "label": "Anxiety arousal is established"},
+        {"kind": "fact", "fact": "state:sleep_debt", "label": "Sleep debt is established"}
+      ],
+      "then": [
+        {"type": "recommend", "recommendation": "body_scan", "weight": 2},
+        {"type": "recommend", "recommendation": "limit_scroll", "weight": 1}
+      ],
+      "why": "When anxiety and poor sleep overlap, calming before bed matters more than a long activity list."
+    },
+    {
+      "id": "E01",
+      "title": "Long duration plus severe impact",
+      "category": "escalation",
+      "salience": 89,
+      "conditions": [
+        {"kind": "attr", "key": "duration", "op": "in", "value": ["months", "long_term"], "label": "It has lasted a month or more"},
+        {"kind": "attr", "key": "impact", "op": "in", "value": ["severe", "severe_plus"], "label": "It is strongly affecting daily life"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:professional_support"},
+        {"type": "flag", "value": "professional_support"},
+        {"type": "advice", "value": "What you are describing has lasted a while and is affecting daily life. A counsellor or doctor can help you understand what is going on and what options exist. This app cannot diagnose."}
+      ],
+      "why": "Persistent difficulties with major daily impact deserve assessment by a qualified person."
+    },
+    {
+      "id": "E02",
+      "title": "Persistent low mood with sleep debt",
+      "category": "escalation",
+      "salience": 84,
+      "conditions": [
+        {"kind": "fact", "fact": "state:persistent_low_mood", "label": "Low mood has persisted"},
+        {"kind": "fact", "fact": "state:sleep_debt", "label": "Sleep debt is established"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:professional_support"},
+        {"type": "flag", "value": "professional_support"}
+      ],
+      "why": "Low mood and sleep problems that persist together are worth discussing with a professional. This is a support prompt, not a diagnosis."
+    },
+    {
+      "id": "E03",
+      "title": "Prolonged grief",
+      "category": "escalation",
+      "salience": 76,
+      "conditions": [
+        {"kind": "fact", "fact": "concern:grief", "label": "Grief is present"},
+        {"kind": "attr", "key": "duration", "op": "in", "value": ["months", "long_term"], "label": "It has lasted a month or more"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:professional_support"},
+        {"type": "advice", "value": "Grief has no deadline, but if it is lasting a long time and making daily life very hard, grief-informed counselling can help."}
+      ],
+      "why": "Prolonged grief can benefit from specialised support; the wording avoids pathologising normal grief."
+    },
+    {
+      "id": "E04",
+      "title": "After a safety check, keep support open",
+      "category": "escalation",
+      "salience": 93,
+      "conditions": [
+        {"kind": "fact", "fact": "safety:confirmed", "label": "You confirmed you are safe right now"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:professional_support"},
+        {"type": "recommend", "recommendation": "safety_plan", "weight": 2},
+        {"type": "advice", "value": "Being safe right now matters, and so does what happens next. Please keep the helpline numbers somewhere visible and consider telling one trusted person about today."}
+      ],
+      "why": "A safety check is not a closed case. The plan stays supportive and includes professional options."
+    },
+    {
+      "id": "E05",
+      "title": "Shared high distress",
+      "category": "escalation",
+      "salience": 83,
+      "conditions": [
+        {"kind": "fact", "fact": "state:high_distress", "label": "High distress is established"},
+        {"kind": "fact_count", "prefix": "concern:", "op": "gte", "value": 2, "label": "More than one concern is present"}
+      ],
+      "then": [
+        {"type": "assert", "fact": "need:professional_support"},
+        {"type": "flag", "value": "professional_support"}
+      ],
+      "why": "Multiple concerns at high distress are beyond what a self-help tool should try to hold alone."
+    }
+  ]
+}

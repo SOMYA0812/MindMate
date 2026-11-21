@@ -1,0 +1,286 @@
+{
+  "version": "1.0",
+  "important": "This is a support and escalation aid, not a risk assessment instrument. It cannot determine whether someone is safe. Patterns are deliberately conservative: uncertainty triggers a direct, compassionate safety check. Never tell a user that they are 'fine', 'low risk' or 'not suicidal' on the basis of this classifier.",
+  "levels": {
+    "none": {"rank": 0, "label": "No crisis signal detected", "needs_safety_check": false},
+    "elevated": {"rank": 2, "label": "Possible crisis signal", "needs_safety_check": true},
+    "high": {"rank": 3, "label": "Serious safety concern", "needs_safety_check": true},
+    "imminent": {"rank": 4, "label": "Possible immediate danger", "needs_safety_check": true}
+  },
+  "signals": [
+    {
+      "id": "CR-IMM-01",
+      "category": "immediate_danger",
+      "level": "imminent",
+      "label": "Possible immediate danger",
+      "patterns": [
+        "\\bgoing to (kill|end) myself (right now|now|tonight|today)\\b",
+        "\\babout to (kill|end) myself\\b",
+        "\\bi (am|'m) going to do it (now|tonight|today)\\b",
+        "\\bdoing it (right now|tonight|today)\\b",
+        "\\balready (took|swallowed) (the )?(pills|tablets|medication|overdose)\\b",
+        "\\b(this is|it's) (my )?(final|last) (message|note|goodbye)\\b",
+        "\\bgoodbye (forever|for good|everyone)\\b",
+        "\\bi won't be here (tomorrow|anymore)\\b",
+        "\\bhave a (loaded )?(gun|knife|rope) (with me|next to me|in my hand)\\b"
+      ]
+    },
+    {
+      "id": "CR-ACT-01",
+      "category": "active_ideation",
+      "level": "high",
+      "label": "Thoughts of ending your life",
+      "patterns": [
+        "\\b(kill|killing) myself\\b",
+        "\\bend(ing)? my (own )?life\\b",
+        "\\btake my (own )?life\\b",
+        "\\bwant to die\\b",
+        "\\bwanna die\\b",
+        "\\bdon'?t want to (be alive|live anymore|wake up)\\b",
+        "\\bdo not want to (be alive|live anymore|wake up)\\b",
+        "\\bsuicid(e|al)\\b",
+        "\\bcan'?t go on living\\b",
+        "\\bno reason to (live|be alive|go on)\\b",
+        "\\bbetter off dead\\b",
+        "\\bbetter off without me\\b"
+      ]
+    },
+    {
+      "id": "CR-PLAN-01",
+      "category": "planning",
+      "level": "high",
+      "label": "A plan or preparation may be present",
+      "patterns": [
+        "\\bi have a plan\\b",
+        "\\bi'?ve planned (it|this|how)\\b",
+        "\\bi know how (i would|to) (kill|end|hurt) (myself|my life)\\b",
+        "\\bwrote a (suicide|goodbye) note\\b",
+        "\\bsaved (up )?(pills|tablets|medication)\\b",
+        "\\b(stockpiled|collected) (pills|medication)\\b",
+        "\\bbought a (rope|gun|knife)\\b",
+        "\\bchosen a (place|method|time)\\b"
+      ]
+    },
+    {
+      "id": "CR-MEANS-01",
+      "category": "access_to_means",
+      "level": "high",
+      "label": "Access to something that could cause harm",
+      "patterns": [
+        "\\bhave (access to )?(a )?(gun|knife|rope|pills|tablets) (at home|with me|nearby|in my room)\\b",
+        "\\bpills? (are )?(in my room|next to me|on my desk)\\b",
+        "\\b(gun|knife|rope) (is )?(in my room|next to me|at home)\\b"
+      ]
+    },
+    {
+      "id": "CR-ATT-01",
+      "category": "recent_attempt",
+      "level": "high",
+      "label": "A recent attempt or self-injury may have occurred",
+      "patterns": [
+        "\\btried to (kill|end) myself\\b",
+        "\\battempted suicide\\b",
+        "\\btook an overdose\\b",
+        "\\boverdos(ed|ing)\\b",
+        "\\bcut my (wrists|arms|legs)\\b",
+        "\\btried to hang myself\\b",
+        "\\bi (just )?(hurt|injured) myself\\b"
+      ],
+      "needs_medical_check": true
+    },
+    {
+      "id": "CR-SH-01",
+      "category": "self_harm",
+      "level": "high",
+      "label": "Self-harm may be present",
+      "patterns": [
+        "\\bself[- ]?harm(ing|ed)?\\b",
+        "\\b(cut|cutting|burn|burning|hit|hitting|starve|starving) myself\\b",
+        "\\bhurt myself\\b",
+        "\\bwant to hurt myself\\b",
+        "\\burge to (cut|hurt) myself\\b"
+      ],
+      "needs_medical_check": true
+    },
+    {
+      "id": "CR-PAS-01",
+      "category": "passive_ideation",
+      "level": "elevated",
+      "label": "Possible passive thoughts about not being here",
+      "patterns": [
+        "\\bwish i (was|were|wasn'?t|weren'?t) (dead|here|alive)\\b",
+        "\\bwish i (was|were) not (here|alive)\\b",
+        "\\bwish i didn'?t (wake up|exist|have to be here)\\b",
+        "\\bwouldn'?t mind (dying|not waking up)\\b",
+        "\\bno point (in|to) (living|being here|going on)\\b",
+        "\\btired of (living|being here|life)\\b",
+        "\\bdon'?t see the point (anymore|in living|of living)\\b",
+        "\\bwhat'?s the point of (living|being here)\\b",
+        "\\bi (just )?want to disappear\\b",
+        "\\beveryone would be better off without me\\b",
+        "\\bi'?m a burden to (everyone|my family|them)\\b"
+      ]
+    },
+    {
+      "id": "CR-HOPE-01",
+      "category": "hopelessness",
+      "level": "elevated",
+      "label": "Strong hopelessness",
+      "patterns": [
+        "\\bno hope\\b",
+        "\\bcompletely hopeless\\b",
+        "\\bnothing will ever (get better|change|improve)\\b",
+        "\\bcan'?t see a (future|way out)\\b"
+      ]
+    },
+    {
+      "id": "CR-AMB-01",
+      "category": "ambiguous_distress",
+      "level": "elevated",
+      "label": "Ambiguous statement that may need a check-in",
+      "patterns": [
+        "\\bi don'?t want to be here anymore\\b",
+        "\\bi'?m so tired of everything\\b",
+        "\\bwhat'?s the point anymore\\b"
+      ]
+    },
+    {
+      "id": "CR-THIRD-01",
+      "category": "third_party_risk",
+      "level": "high",
+      "label": "Concern about someone else's safety",
+      "patterns": [
+        "\\bmy (friend|brother|sister|cousin|partner|roommate|classmate) (wants to|is going to) (die|kill (himself|herself|themselves))\\b",
+        "\\bmy (friend|brother|sister|cousin|partner|roommate|classmate) is suicidal\\b",
+        "\\bsomeone i know is (suicidal|self[- ]?harming)\\b",
+        "\\b(he|she|they) (wants to|is going to) (kill|hurt) (himself|herself|themselves)\\b",
+        "\\b(he|she|they) (is|are) self[- ]?harming\\b"
+      ],
+      "third_party": true
+    }
+  ],
+  "protective_signals": [
+    "\\bi (am|'m) safe (right now|for now)\\b",
+    "\\bi (am|'m) with (someone|a friend|my family)\\b",
+    "\\bi (will|won'?t|would never) (not )?(hurt|kill) myself\\b",
+    "\\bi have a safety plan\\b",
+    "\\bi called (a|the) (helpline|hotline)\\b",
+    "\\bi'?m not going to do anything\\b"
+  ],
+  "denial_signals": [
+    "\\b(not|never) (suicidal|going to kill myself|going to hurt myself)\\b",
+    "\\bwould never (kill|hurt) myself\\b",
+    "\\bdon'?t want to die\\b",
+    "\\bdo not want to die\\b",
+    "\\bno plans? to (kill|hurt) myself\\b",
+    "\\b(don'?t|do not) plan to (kill|hurt) myself\\b"
+  ],
+  "negation_window": [
+    "not", "never", "no", "don't", "dont", "doesn't", "didn't", "won't", "wouldn't", "isn't", "aren't", "wasn't", "weren't", "hardly", "barely"
+  ],
+  "safety_questions": [
+    {
+      "id": "SQ1",
+      "question": "Are you having thoughts of ending your life, or hurting yourself, right now?",
+      "help": "I am asking directly because your safety matters more than anything else in this conversation.",
+      "options": [
+        {"label": "No, I am safe right now", "value": "safe_now"},
+        {"label": "I'm not sure", "value": "unsure"},
+        {"label": "Yes, I need help now", "value": "help_now"}
+      ]
+    },
+    {
+      "id": "SQ2",
+      "question": "Do you have a plan, or access to something you could use to hurt yourself?",
+      "help": "You do not have to give details. A simple yes, no or 'not sure' is enough.",
+      "options": [
+        {"label": "No", "value": "no_plan"},
+        {"label": "I'm not sure", "value": "unsure"},
+        {"label": "Yes", "value": "has_plan"}
+      ]
+    },
+    {
+      "id": "SQ3",
+      "question": "Is there someone who can be with you, or stay on the phone with you, right now?",
+      "help": "Being physically with someone, or on a call, can make a difficult moment less lonely.",
+      "options": [
+        {"label": "Yes, someone is available", "value": "someone_available"},
+        {"label": "Not right now", "value": "alone"},
+        {"label": "I'm not sure", "value": "unsure"}
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "name": "Tele-MANAS (India)",
+      "number": "14416",
+      "alternate": "1-800-891-4416",
+      "availability": "24/7, free, Government of India",
+      "when": "Mental health support, emotional crisis, or when you need to speak to a trained professional. Available in multiple Indian languages.",
+      "source": "telemanas.mohfw.gov.in"
+    },
+    {
+      "name": "Emergency services (India)",
+      "number": "112",
+      "alternate": null,
+      "availability": "24/7",
+      "when": "Immediate danger to yourself or another person, a medical emergency, or if you have already taken something harmful.",
+      "source": "112.gov.in"
+    },
+    {
+      "name": "KIRAN Helpline (India)",
+      "number": "1800-599-0019",
+      "alternate": null,
+      "availability": "24/7, toll-free, 13 languages",
+      "when": "Anxiety, depression, suicidal thoughts, or any mental health concern.",
+      "source": "kiranhelpline.in"
+    },
+    {
+      "name": "AASRA (India)",
+      "number": "+91-9820466726",
+      "alternate": null,
+      "availability": "24/7",
+      "when": "Crisis support and suicide prevention; someone to talk to in an urgent moment.",
+      "source": "aasra.info"
+    },
+    {
+      "name": "Vandrevala Foundation (India)",
+      "number": "+91-9999666555",
+      "alternate": "1860-2662-345",
+      "availability": "24/7",
+      "when": "Emotional crisis, anxiety, depression, or when you need someone to listen.",
+      "source": "vandrevalafoundation.com"
+    },
+    {
+      "name": "CHILDLINE (India, under 18)",
+      "number": "1098",
+      "alternate": null,
+      "availability": "24/7, toll-free",
+      "when": "A child or young person in distress, danger, or needing immediate support.",
+      "source": "childlineindia.org"
+    }
+  ],
+  "out_of_india_note": "If you are outside India, please contact your local emergency number or a local crisis line. The International Association for Suicide Prevention maintains a directory at findahelpline.com. If you cannot reach anyone, go to the nearest emergency department and tell them you are not safe.",
+  "response_openers": {
+    "imminent": "I'm really glad you told me. What you have said sounds like you could be in immediate danger, and I do not want you to be alone with this.",
+    "high": "Thank you for trusting me with something this heavy. Your safety matters more than anything else we could talk about right now.",
+    "elevated": "I want to pause and check something with you directly, because your safety matters more than any activity suggestion.",
+    "third_party": "It sounds like you are worried about someone you care about. That is a heavy thing to carry, and I want to help you respond safely.",
+    "ambiguous": "I want to make sure I understand what you mean, because I would rather ask directly than assume."
+  },
+  "safety_steps": [
+    "Tell one person you trust that you are not okay, and ask them to stay with you or keep talking.",
+    "Move away from anything you could use to hurt yourself. If someone is with you, ask them to hold it for now.",
+    "Go to a safer place where another person is present — a shared room, a friend's place, or an emergency department.",
+    "Call 112 if you are in immediate danger, or Tele-MANAS on 14416 to speak to a mental health professional.",
+    "If you have already taken something harmful or injured yourself, call 112 or go to the nearest emergency department now.",
+    "Stay on the line with a helpline if you can. You do not need the right words."
+  ],
+  "do_not": [
+    "Do not give instructions about methods, quantities or ways to hide self-harm.",
+    "Do not promise confidentiality that could prevent emergency help.",
+    "Do not tell the person they are 'fine', 'attention-seeking', or 'not really suicidal'.",
+    "Do not debate whether they should feel this way, or offer quick fixes.",
+    "Do not use the classifier as a substitute for human assessment."
+  ]
+}

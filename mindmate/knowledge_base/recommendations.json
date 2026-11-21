@@ -1,0 +1,695 @@
+{
+  "version": "1.0",
+  "note": "Optional, low-burden activity suggestions. Nothing here is a treatment prescription. A recommendation is only offered when a rule explicitly asks for it.",
+  "recommendations": [
+    {
+      "id": "walk_10",
+      "title": "A short walk, no pressure",
+      "category": "movement",
+      "kind": "activity",
+      "summary": "Ten minutes outside or around your room, at whatever pace feels possible.",
+      "why": "Gentle movement can shift attention and give the day a small, completed shape.",
+      "steps": [
+        "Choose a distance that feels almost too easy.",
+        "Set a timer for 10 minutes (or 5 if 10 feels like too much).",
+        "Notice one thing you can see, hear and feel.",
+        "Stop when the timer ends. That counts."
+      ],
+      "duration_minutes": 10,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["movement", "outdoors", "behavioural-activation"],
+      "caution": null,
+      "habit_template": {
+        "name": "Take a 10-minute walk",
+        "category": "movement",
+        "target_value": 10,
+        "unit": "minutes",
+        "target_days_per_week": 5,
+        "points": 10
+      }
+    },
+    {
+      "id": "journaling_5",
+      "title": "Five-minute brain dump",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Write whatever is in your head for five minutes, without editing it.",
+      "why": "Putting a feeling into words can make it feel less tangled and more approachable.",
+      "steps": [
+        "Open a notes app or take a piece of paper.",
+        "Write for five minutes without correcting spelling or grammar.",
+        "Finish with one sentence: 'Right now, the main thing is...'",
+        "You never have to show it to anyone."
+      ],
+      "duration_minutes": 5,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["reflection", "emotional-release", "quiet"],
+      "caution": "If writing about a difficult memory feels overwhelming, stop and do something grounding instead.",
+      "habit_template": {
+        "name": "Write a short journal note",
+        "category": "creative",
+        "target_value": 1,
+        "unit": "entry",
+        "target_days_per_week": 5,
+        "points": 10
+      }
+    },
+    {
+      "id": "box_breathing",
+      "title": "Box breathing",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "A slow four-part breath: in for 4, hold for 4, out for 4, hold for 4.",
+      "why": "Slowing the breath gives your body a clear, simple signal that it can settle.",
+      "steps": [
+        "Sit comfortably and let your shoulders drop.",
+        "Breathe in through your nose for 4 counts.",
+        "Hold gently for 4, then breathe out for 4.",
+        "Hold for 4, then repeat up to 6 rounds.",
+        "If holding feels uncomfortable, skip the holds and just breathe out slowly."
+      ],
+      "duration_minutes": 3,
+      "time_needed": "low",
+      "energy_level": "any",
+      "tags": ["grounding", "anxiety", "quiet"],
+      "caution": "Stop if you feel dizzy. Never force a breath.",
+      "habit_template": {
+        "name": "One minute of slow breathing",
+        "category": "mind",
+        "target_value": 1,
+        "unit": "session",
+        "target_days_per_week": 5,
+        "points": 5
+      }
+    },
+    {
+      "id": "grounding_54321",
+      "title": "5-4-3-2-1 grounding",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Anchor your attention in the room using your five senses.",
+      "why": "When thoughts are racing, sensory details give attention somewhere concrete to land.",
+      "steps": [
+        "Name 5 things you can see.",
+        "Name 4 things you can touch.",
+        "Name 3 things you can hear.",
+        "Name 2 things you can smell (or two smells you like).",
+        "Name 1 thing you can taste, or take one slow sip of water."
+      ],
+      "duration_minutes": 4,
+      "time_needed": "low",
+      "energy_level": "any",
+      "tags": ["grounding", "panic", "anxiety"],
+      "caution": null,
+      "habit_template": {
+        "name": "Use a grounding exercise when needed",
+        "category": "mind",
+        "target_value": 1,
+        "unit": "session",
+        "target_days_per_week": 3,
+        "points": 5
+      }
+    },
+    {
+      "id": "sleep_routine",
+      "title": "Build a small wind-down",
+      "category": "sleep",
+      "kind": "activity",
+      "summary": "Pick three quiet steps to repeat before bed, starting 30 minutes earlier.",
+      "why": "A predictable wind-down helps the brain recognise that the day is ending.",
+      "steps": [
+        "Choose a realistic bedtime you can repeat most nights.",
+        "Dim the lights and put screens out of reach 20–30 minutes before bed.",
+        "Do the same two or three calm things each night: wash up, stretch, read, or listen to something quiet.",
+        "If sleep does not come, rest in dim light rather than forcing it.",
+        "Keep the same wake-up time where you can."
+      ],
+      "duration_minutes": 30,
+      "time_needed": "medium",
+      "energy_level": "low",
+      "tags": ["sleep", "routine", "evening"],
+      "caution": "If sleep problems last for weeks, or you snore heavily or feel sleepy while driving, speak to a doctor.",
+      "habit_template": {
+        "name": "Start my wind-down routine",
+        "category": "sleep",
+        "target_value": 20,
+        "unit": "minutes",
+        "target_days_per_week": 5,
+        "points": 10
+      }
+    },
+    {
+      "id": "hydration",
+      "title": "One glass of water",
+      "category": "nutrition",
+      "kind": "activity",
+      "summary": "A single glass now, not a perfect hydration plan.",
+      "why": "Small physical care steps are easy to complete and can interrupt a long stretch of neglect.",
+      "steps": [
+        "Fill a glass or bottle.",
+        "Drink it slowly where you are sitting.",
+        "Refill it and keep it visible for later."
+      ],
+      "duration_minutes": 2,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["nutrition", "daily-care", "tiny-step"],
+      "caution": null,
+      "habit_template": {
+        "name": "Drink enough water",
+        "category": "nutrition",
+        "target_value": 6,
+        "unit": "glasses",
+        "target_days_per_week": 7,
+        "points": 5
+      }
+    },
+    {
+      "id": "connect_friend",
+      "title": "Send one low-pressure message",
+      "category": "connection",
+      "kind": "activity",
+      "summary": "A short text to someone safe — no long explanation required.",
+      "why": "Connection does not have to be a big conversation. A small signal can reduce the sense of being alone with things.",
+      "steps": [
+        "Choose one person who tends to be kind.",
+        "Send: 'Hey, thinking of you. How are you?' or 'Hi, I'm having a rough day. Can we chat for a bit?'",
+        "You do not owe anyone a full update.",
+        "If nobody comes to mind, think of a helpline as a real conversation option."
+      ],
+      "duration_minutes": 5,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["connection", "support", "social"],
+      "caution": null,
+      "habit_template": {
+        "name": "Message someone I trust",
+        "category": "connection",
+        "target_value": 1,
+        "unit": "message",
+        "target_days_per_week": 3,
+        "points": 10
+      }
+    },
+    {
+      "id": "micro_break",
+      "title": "A real ten-minute break",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Step away from the task, not just from one tab.",
+      "why": "Rest is part of effort, not a reward you have to earn.",
+      "steps": [
+        "Set a timer for 10 minutes.",
+        "Stand up and move away from your desk or study spot.",
+        "Choose something low-demand: water, stretching, looking outside, music.",
+        "Return only when the timer ends — or take longer if you need it."
+      ],
+      "duration_minutes": 10,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["rest", "study", "boundaries"],
+      "caution": null,
+      "habit_template": {
+        "name": "Take one screen-free break",
+        "category": "mind",
+        "target_value": 10,
+        "unit": "minutes",
+        "target_days_per_week": 5,
+        "points": 5
+      }
+    },
+    {
+      "id": "gratitude_3",
+      "title": "Three small good things",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Name three ordinary things that were okay today. They can be tiny.",
+      "why": "This is not about forced positivity; it is about noticing what else is present alongside difficulty.",
+      "steps": [
+        "Write three things that were neutral or pleasant.",
+        "They can be as small as a warm cup or a song.",
+        "If nothing comes, write 'I got through today' and leave it there."
+      ],
+      "duration_minutes": 3,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["reflection", "low-mood", "gentle"],
+      "caution": "If this feels invalidating, skip it. It is optional.",
+      "habit_template": {
+        "name": "Note three small good things",
+        "category": "creative",
+        "target_value": 3,
+        "unit": "notes",
+        "target_days_per_week": 4,
+        "points": 5
+      }
+    },
+    {
+      "id": "body_scan",
+      "title": "Two-minute body scan",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Move attention slowly from your feet to your face, noticing without fixing.",
+      "why": "Turning attention toward bodily sensation can interrupt a loop of anxious thinking.",
+      "steps": [
+        "Sit or lie down somewhere comfortable.",
+        "Bring attention to your feet for a few breaths.",
+        "Move slowly upward: legs, belly, hands, shoulders, jaw.",
+        "Where you find tightness, breathe out a little longer. No need to change it."
+      ],
+      "duration_minutes": 2,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["grounding", "rest", "quiet"],
+      "caution": null,
+      "habit_template": {
+        "name": "Do a short body scan",
+        "category": "mind",
+        "target_value": 2,
+        "unit": "minutes",
+        "target_days_per_week": 4,
+        "points": 5
+      }
+    },
+    {
+      "id": "read_10",
+      "title": "Read ten pages or ten minutes",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Something gentle and absorbing, not something that feels like homework.",
+      "why": "A contained, low-stakes activity can create a break from rumination.",
+      "steps": [
+        "Pick something you can put down easily.",
+        "Read for ten minutes with a timer.",
+        "If your attention drifts, that is not failure. Return to the page or stop."
+      ],
+      "duration_minutes": 10,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["quiet", "rest", "low-mood"],
+      "caution": null,
+      "habit_template": {
+        "name": "Read for 10 minutes",
+        "category": "mind",
+        "target_value": 10,
+        "unit": "minutes",
+        "target_days_per_week": 5,
+        "points": 10
+      }
+    },
+    {
+      "id": "sunlight",
+      "title": "Five minutes of daylight",
+      "category": "movement",
+      "kind": "activity",
+      "summary": "Open a curtain or step outside for a few minutes of natural light.",
+      "why": "Daylight and a change of scene can support your body clock and break up a long indoor stretch.",
+      "steps": [
+        "Open the curtains or step near a window.",
+        "Stay for five minutes without needing to do anything productive.",
+        "If you can go outside, notice the air and the temperature."
+      ],
+      "duration_minutes": 5,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["outdoors", "movement", "sleep"],
+      "caution": "Use sun protection if you stay out longer.",
+      "habit_template": {
+        "name": "Get five minutes of daylight",
+        "category": "movement",
+        "target_value": 5,
+        "unit": "minutes",
+        "target_days_per_week": 5,
+        "points": 5
+      }
+    },
+    {
+      "id": "tidy_space",
+      "title": "Reset one small area",
+      "category": "care",
+      "kind": "activity",
+      "summary": "Clear one surface, make the bed, or put away five things. Not the whole room.",
+      "why": "A visible, bounded change can create a small sense of agency on an overwhelming day.",
+      "steps": [
+        "Choose one surface or one small category of objects.",
+        "Set a five-minute timer.",
+        "Stop when the timer ends, even if it is not perfect."
+      ],
+      "duration_minutes": 5,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["structure", "environment", "tiny-step"],
+      "caution": null,
+      "habit_template": {
+        "name": "Reset one small space",
+        "category": "care",
+        "target_value": 5,
+        "unit": "minutes",
+        "target_days_per_week": 4,
+        "points": 5
+      }
+    },
+    {
+      "id": "music_mood",
+      "title": "One song with full attention",
+      "category": "creative",
+      "kind": "activity",
+      "summary": "Listen to a song you like without doing anything else.",
+      "why": "Music can give a feeling somewhere to go when words are hard.",
+      "steps": [
+        "Choose one song — calming or cathartic, whichever fits.",
+        "Pause other tasks and listen to the whole thing.",
+        "Notice what changes in your body or mood, with no judgement."
+      ],
+      "duration_minutes": 4,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["emotional-release", "creative", "quiet"],
+      "caution": null,
+      "habit_template": {
+        "name": "Listen to one song with full attention",
+        "category": "creative",
+        "target_value": 1,
+        "unit": "song",
+        "target_days_per_week": 3,
+        "points": 5
+      }
+    },
+    {
+      "id": "stretch",
+      "title": "A gentle stretch",
+      "category": "movement",
+      "kind": "activity",
+      "summary": "Unclench your jaw, roll your shoulders, stretch your neck and back.",
+      "why": "Stress often settles in the body; a slow stretch can release some of that physical holding.",
+      "steps": [
+        "Sit or stand comfortably.",
+        "Roll your shoulders back three times.",
+        "Tilt your head slowly side to side.",
+        "Reach your arms overhead and breathe out.",
+        "Stop anywhere that hurts."
+      ],
+      "duration_minutes": 3,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["movement", "stress", "grounding"],
+      "caution": "Do not push into pain. Check with a doctor if you have an injury.",
+      "habit_template": {
+        "name": "Do a gentle stretch",
+        "category": "movement",
+        "target_value": 3,
+        "unit": "minutes",
+        "target_days_per_week": 4,
+        "points": 5
+      }
+    },
+    {
+      "id": "plan_one_small_thing",
+      "title": "Choose just one next thing",
+      "category": "study",
+      "kind": "activity",
+      "summary": "When everything feels urgent, reduce the list to one task and one first step.",
+      "why": "Overwhelm shrinks when the next action is specific, small and time-bound.",
+      "steps": [
+        "Write down everything on your mind for two minutes.",
+        "Circle the one thing that matters most today.",
+        "Under it, write the smallest physical first step (open the file, find the page, send the message).",
+        "Set a 10-minute timer and do only that step."
+      ],
+      "duration_minutes": 10,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["structure", "overwhelm", "study"],
+      "caution": null,
+      "habit_template": {
+        "name": "Pick one next small step",
+        "category": "study",
+        "target_value": 1,
+        "unit": "step",
+        "target_days_per_week": 5,
+        "points": 5
+      }
+    },
+    {
+      "id": "study_25",
+      "title": "One 25-minute focus block",
+      "category": "study",
+      "kind": "activity",
+      "summary": "A single timed block with a clear, narrow goal — then a real break.",
+      "why": "A short, bounded study block is easier to start than an open-ended plan.",
+      "steps": [
+        "Choose one small outcome for the block.",
+        "Put your phone out of reach and set a 25-minute timer.",
+        "Work only on that outcome.",
+        "Take a 5-minute break afterwards, whether or not it went perfectly."
+      ],
+      "duration_minutes": 25,
+      "time_needed": "medium",
+      "energy_level": "medium",
+      "tags": ["study", "structure", "focus"],
+      "caution": "If you are exhausted, a break is a better choice than pushing through.",
+      "habit_template": {
+        "name": "Complete one 25-minute focus block",
+        "category": "study",
+        "target_value": 25,
+        "unit": "minutes",
+        "target_days_per_week": 5,
+        "points": 10
+      }
+    },
+    {
+      "id": "worry_window",
+      "title": "A contained worry window",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Set aside 10 minutes to write worries down, then close the notebook.",
+      "why": "Containing worry to a specific time can reduce how much it spills into the whole day.",
+      "steps": [
+        "Set a 10-minute timer.",
+        "Write each worry as a sentence.",
+        "Mark each one: 'can act on it' or 'not in my control right now'.",
+        "Choose one small action for one actionable worry.",
+        "Close the notebook when the timer ends."
+      ],
+      "duration_minutes": 10,
+      "time_needed": "low",
+      "energy_level": "any",
+      "tags": ["cognitive", "anxiety", "structure"],
+      "caution": "If this becomes a rumination session, stop and use a grounding exercise.",
+      "habit_template": {
+        "name": "Use a 10-minute worry window",
+        "category": "mind",
+        "target_value": 10,
+        "unit": "minutes",
+        "target_days_per_week": 3,
+        "points": 5
+      }
+    },
+    {
+      "id": "self_compassion_note",
+      "title": "Rewrite one harsh sentence",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Take one self-critical thought and write what you would say to a friend in the same situation.",
+      "why": "Changing the tone of an inner sentence can loosen its grip, even when the situation has not changed.",
+      "steps": [
+        "Write the harsh thought exactly as it appears.",
+        "Ask: would I say this to a friend I care about?",
+        "Write a fairer version that is still honest — not fake positivity.",
+        "Read the fairer version out loud once."
+      ],
+      "duration_minutes": 7,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["cognitive", "self-criticism", "quiet"],
+      "caution": null,
+      "habit_template": {
+        "name": "Write one kinder thought",
+        "category": "creative",
+        "target_value": 1,
+        "unit": "note",
+        "target_days_per_week": 3,
+        "points": 5
+      }
+    },
+    {
+      "id": "limit_scroll",
+      "title": "One small screen boundary",
+      "category": "care",
+      "kind": "activity",
+      "summary": "Move one app off the home screen, or set a single timer for scrolling.",
+      "why": "A small environmental change is often easier than relying on willpower alone.",
+      "steps": [
+        "Choose one app that tends to swallow time.",
+        "Move it off the home screen or set a 20-minute timer.",
+        "Put a book, water or something else within reach.",
+        "Notice the urge without needing to obey it."
+      ],
+      "duration_minutes": 5,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["boundaries", "sleep", "care"],
+      "caution": null,
+      "habit_template": {
+        "name": "Keep one screen-free hour",
+        "category": "care",
+        "target_value": 1,
+        "unit": "hour",
+        "target_days_per_week": 4,
+        "points": 5
+      }
+    },
+    {
+      "id": "anger_pause",
+      "title": "The 90-second pause",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Before responding, step away and let the first wave of anger move through your body.",
+      "why": "A short pause creates space between a strong feeling and an action you might regret.",
+      "steps": [
+        "Name it silently: 'This is anger.'",
+        "Put both feet on the floor and unclench your hands.",
+        "Breathe out longer than you breathe in for five breaths.",
+        "If possible, leave the room for two minutes.",
+        "Decide what to do only after the pause."
+      ],
+      "duration_minutes": 3,
+      "time_needed": "low",
+      "energy_level": "any",
+      "tags": ["anger", "grounding", "emotional-release"],
+      "caution": "If you feel you might hurt someone, move away and contact someone you trust or emergency services.",
+      "habit_template": {
+        "name": "Pause before reacting",
+        "category": "mind",
+        "target_value": 1,
+        "unit": "pause",
+        "target_days_per_week": 3,
+        "points": 5
+      }
+    },
+    {
+      "id": "grief_memory_ritual",
+      "title": "A small remembering ritual",
+      "category": "creative",
+      "kind": "activity",
+      "summary": "Do one small thing that honours the person or loss — a photo, a song, a letter, a memory.",
+      "why": "Grief does not need to be rushed or fixed. A ritual can give it a gentle place.",
+      "steps": [
+        "Choose one memory or object that feels manageable today.",
+        "Spend five minutes with it: look at a photo, listen to a song, write a short note.",
+        "Say or write one thing you want to remember.",
+        "Close by doing something soothing — water, fresh air, a warm drink."
+      ],
+      "duration_minutes": 10,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["grief", "emotional-release", "quiet"],
+      "caution": "If grief feels unsafe or you are not able to function day to day, please reach out to a professional.",
+      "habit_template": {
+        "name": "Spend a quiet moment remembering",
+        "category": "creative",
+        "target_value": 5,
+        "unit": "minutes",
+        "target_days_per_week": 3,
+        "points": 5
+      }
+    },
+    {
+      "id": "small_social_step",
+      "title": "One small social step",
+      "category": "connection",
+      "kind": "activity",
+      "summary": "Choose the smallest social contact that feels slightly possible — a nod, a message, a short hello.",
+      "why": "Avoiding social situations reduces anxiety in the short term but can make it grow. Tiny steps build evidence that you can cope.",
+      "steps": [
+        "Pick a low-stakes situation: message one person, greet a classmate, ask a shop assistant a question.",
+        "Set a tiny goal: 10 seconds of contact is enough.",
+        "Notice any anxiety without waiting for it to disappear first.",
+        "Write down what actually happened, not what you feared."
+      ],
+      "duration_minutes": 5,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["social-anxiety", "connection", "exposure"],
+      "caution": "This is a self-help idea, not a therapy protocol. A therapist can help design graded steps.",
+      "habit_template": {
+        "name": "Take one small social step",
+        "category": "connection",
+        "target_value": 1,
+        "unit": "step",
+        "target_days_per_week": 3,
+        "points": 5
+      }
+    },
+    {
+      "id": "professional_consult",
+      "title": "Consider talking to a professional",
+      "category": "support",
+      "kind": "professional",
+      "summary": "A counsellor, doctor or mental health professional can offer assessment and options that this app cannot.",
+      "why": "Persistent or severe difficulties deserve a real clinical conversation — not because you have failed at self-help.",
+      "steps": [
+        "Note two or three things you want help with.",
+        "Consider a college counsellor, a family doctor, or a licensed therapist.",
+        "Ask someone you trust to help you make the first call if that makes it easier.",
+        "In India you can also call Tele-MANAS on 14416 to ask how to access care."
+      ],
+      "duration_minutes": 15,
+      "time_needed": "medium",
+      "energy_level": "any",
+      "tags": ["professional-support", "referral"],
+      "caution": "This app cannot diagnose or treat any condition.",
+      "habit_template": null
+    },
+    {
+      "id": "safety_plan",
+      "title": "Make a simple safety plan",
+      "category": "support",
+      "kind": "safety",
+      "summary": "A short plan for the next hour: who to contact, where to go, what to remove from reach.",
+      "why": "When things feel unsafe, a concrete plan reduces the number of decisions you have to make in a crisis.",
+      "steps": [
+        "Tell one trusted person how you are feeling right now.",
+        "Move away from anything you could use to hurt yourself, and ask someone to hold it.",
+        "Go to a place with another person, or call a helpline and stay on the line.",
+        "Call 112 if you are in immediate danger. Call Tele-MANAS 14416 for mental health support.",
+        "Write down the number of one person you will contact if things get worse."
+      ],
+      "duration_minutes": 10,
+      "time_needed": "low",
+      "energy_level": "any",
+      "tags": ["crisis", "safety"],
+      "caution": "This plan does not replace emergency services. If you are in immediate danger, call 112 now.",
+      "habit_template": null
+    },
+    {
+      "id": "values_reflection",
+      "title": "Reconnect with what matters",
+      "category": "mind",
+      "kind": "activity",
+      "summary": "Name one value you want to act on today, and one tiny action that fits it.",
+      "why": "When mood is low, values can offer direction when motivation is not available.",
+      "steps": [
+        "Pick one word: kindness, honesty, connection, curiosity, care, courage.",
+        "Ask: what would one small action in that direction look like today?",
+        "Do the smallest version within the next hour.",
+        "Notice the action, not the outcome."
+      ],
+      "duration_minutes": 5,
+      "time_needed": "low",
+      "energy_level": "low",
+      "tags": ["values", "behavioural-activation", "reflection"],
+      "caution": null,
+      "habit_template": {
+        "name": "Take one value-guided action",
+        "category": "wellbeing",
+        "target_value": 1,
+        "unit": "action",
+        "target_days_per_week": 4,
+        "points": 5
+      }
+    }
+  ]
+}

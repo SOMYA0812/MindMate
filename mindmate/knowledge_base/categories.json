@@ -1,0 +1,326 @@
+{
+  "version": "1.0",
+  "note": "Concern taxonomy used by the dialogue manager and the natural-language detector. Keywords are evidence, not diagnoses. A single weak keyword never triggers a recommendation on its own.",
+  "concerns": [
+    {
+      "id": "sadness",
+      "label": "Sadness or low mood",
+      "short": "Sadness",
+      "emoji": "🌧️",
+      "description": "Feeling down, tearful, empty or low.",
+      "empathy": [
+        "That sounds heavy. Thank you for saying it out loud.",
+        "Sadness can make everything feel slower, and it makes sense that it is on your mind."
+      ],
+      "normalise": "You do not have to justify feeling low or prove that it is 'bad enough'.",
+      "followups": ["duration", "impact"],
+      "keywords": ["sad", "sadness", "unhappy", "down", "feeling low", "feel low", "really low", "very low", "so low", "low mood", "crying", "cry a lot", "tearful", "miserable", "heartbroken", "empty inside", "numb", "gloomy"],
+      "strong_keywords": ["depressed", "depression", "hopeless"],
+      "risk_note": "If low mood has lasted more than two weeks or is affecting daily life, a professional conversation is worth considering."
+    },
+    {
+      "id": "loneliness",
+      "label": "Loneliness or isolation",
+      "short": "Loneliness",
+      "emoji": "🫂",
+      "description": "Feeling alone, left out, or without someone to talk to.",
+      "empathy": [
+        "Feeling alone can hurt even when there are people physically nearby.",
+        "It sounds like you have been carrying this without much company."
+      ],
+      "normalise": "Needing connection is human, not needy.",
+      "followups": ["duration", "support"],
+      "keywords": ["lonely", "loneliness", "alone", "all alone", "no one", "nobody", "isolated", "left out", "no friends", "by myself", "no one to talk"],
+      "strong_keywords": ["completely alone", "nobody cares"],
+      "risk_note": null
+    },
+    {
+      "id": "stress",
+      "label": "Stress or pressure",
+      "short": "Stress",
+      "emoji": "🌀",
+      "description": "Feeling under pressure, stretched thin, or unable to switch off.",
+      "empathy": [
+        "That is a lot to hold at once. No wonder you feel stretched.",
+        "Pressure that does not let up is exhausting, even when you look fine from outside."
+      ],
+      "normalise": "Struggling under pressure is not a sign of weakness.",
+      "followups": ["duration", "impact"],
+      "keywords": ["stress", "stressed", "stressful", "pressure", "under pressure", "tense", "too much on my plate", "deadline", "deadlines", "overloaded", "stretched thin", "burning out"],
+      "strong_keywords": ["can't cope", "cannot cope", "breaking down"],
+      "risk_note": null
+    },
+    {
+      "id": "anxiety",
+      "label": "Anxiety or worry",
+      "short": "Anxiety",
+      "emoji": "🌪️",
+      "description": "Worry, nervousness, racing thoughts or a sense of dread.",
+      "empathy": [
+        "Anxiety can make the mind run fast even when you want it to rest.",
+        "That sounds uncomfortable and tiring. Thank you for telling me."
+      ],
+      "normalise": "Worry is not a character flaw, and you are not 'too much' for feeling it.",
+      "followups": ["duration", "impact"],
+      "keywords": ["anxious", "anxiety", "worried", "worry", "worrying", "nervous", "scared", "afraid", "fear", "overthinking", "racing thoughts", "on edge", "restless", "dread"],
+      "strong_keywords": ["panic attack", "constant worry", "can't stop worrying"],
+      "risk_note": null
+    },
+    {
+      "id": "panic",
+      "label": "Panic or sudden fear",
+      "short": "Panic",
+      "emoji": "💨",
+      "description": "Sudden intense fear, a racing heart, or feeling unable to breathe.",
+      "empathy": [
+        "Panic can feel frightening in your body. I am glad you are here talking about it.",
+        "That sounds intense, and it makes sense that it has stayed with you."
+      ],
+      "normalise": "Panic sensations are real and distressing, even when there is no obvious danger.",
+      "followups": ["duration", "impact"],
+      "keywords": ["panic", "panicking", "panic attack", "heart racing", "can't breathe", "cannot breathe", "shaking", "terrified", "freaking out"],
+      "strong_keywords": ["feel like i'm dying", "feel like i am dying"],
+      "risk_note": "If you have chest pain, faintness or trouble breathing for the first time, seek medical care. Panic and physical health problems can look alike."
+    },
+    {
+      "id": "low_motivation",
+      "label": "Low motivation",
+      "short": "Motivation",
+      "emoji": "🪫",
+      "description": "Difficulty starting things, low energy, or feeling apathetic.",
+      "empathy": [
+        "Starting anything can feel enormous when motivation is low.",
+        "That stuck feeling is real, and it does not mean you are lazy."
+      ],
+      "normalise": "Low motivation is often a sign you are depleted, not a moral failure.",
+      "followups": ["duration", "energy"],
+      "keywords": ["no motivation", "unmotivated", "can't start", "cannot start", "procrastinat*", "lazy", "no energy", "don't feel like", "do not feel like", "apathy", "apathetic", "can't focus", "cannot focus", "stuck"],
+      "strong_keywords": ["can't get out of bed", "cannot get out of bed", "don't see the point"],
+      "risk_note": null
+    },
+    {
+      "id": "sleep_difficulty",
+      "label": "Sleep difficulties",
+      "short": "Sleep",
+      "emoji": "🌙",
+      "description": "Trouble falling asleep, staying asleep, or feeling unrested.",
+      "empathy": [
+        "Sleep problems make everything else harder to carry.",
+        "Not being able to rest when you need to is genuinely frustrating."
+      ],
+      "normalise": "Sleep and mood affect each other; struggling with sleep is common and treatable.",
+      "followups": ["duration", "sleep_hours"],
+      "keywords": ["can't sleep", "cannot sleep", "insomnia", "not sleeping", "trouble sleeping", "wake up at night", "waking up", "oversleep", "nightmare", "nightmares", "exhausted", "tired all the time", "sleep problems"],
+      "strong_keywords": ["haven't slept", "have not slept", "awake all night"],
+      "risk_note": "If sleep problems continue for several weeks, or you feel sleepy while driving, speak to a doctor."
+    },
+    {
+      "id": "negative_thinking",
+      "label": "Harsh self-talk",
+      "short": "Self-talk",
+      "emoji": "🪞",
+      "description": "Self-criticism, guilt, shame, or a strong sense of not being good enough.",
+      "empathy": [
+        "That inner voice sounds very harsh. You do not deserve to be spoken to that way.",
+        "Carrying that much self-blame is tiring."
+      ],
+      "normalise": "A critical inner voice is common, and it can be challenged gently.",
+      "followups": ["duration", "impact"],
+      "keywords": ["hate myself", "not good enough", "failure", "worthless", "useless", "stupid", "self-critici*", "self critici*", "my fault", "guilt", "guilty", "ashamed", "shame", "i'm a burden", "i am a burden", "everyone would be better off"],
+      "strong_keywords": ["i'm worthless", "i am worthless", "i hate myself"],
+      "risk_note": null
+    },
+    {
+      "id": "anger",
+      "label": "Anger or frustration",
+      "short": "Anger",
+      "emoji": "🔥",
+      "description": "Irritation, rage, or frustration that feels hard to contain.",
+      "empathy": [
+        "Anger can be a signal that something matters to you, or that a boundary has been crossed.",
+        "That frustration sounds like it has been building up."
+      ],
+      "normalise": "Anger is not automatically bad; what matters is what you can do with it safely.",
+      "followups": ["duration", "impact"],
+      "keywords": ["angry", "anger", "frustrat*", "irritat*", "rage", "annoyed", "fed up", "snapping at people"],
+      "strong_keywords": ["want to break something", "losing my temper"],
+      "risk_note": "If you feel you might hurt yourself or someone else, move away and contact emergency services or a trusted person."
+    },
+    {
+      "id": "overwhelm",
+      "label": "Feeling overwhelmed",
+      "short": "Overwhelm",
+      "emoji": "🌊",
+      "description": "Too many demands at once, or feeling unable to cope with the pile.",
+      "empathy": [
+        "When everything arrives at once, it makes sense that your system feels flooded.",
+        "That sounds like far more than one person should have to juggle."
+      ],
+      "normalise": "Overwhelm is a signal about load, not a verdict on your ability.",
+      "followups": ["duration", "impact"],
+      "keywords": ["overwhelmed", "overwhelming", "too much", "can't cope", "cannot cope", "falling apart", "spiralling", "spiraling", "everything at once", "drowning", "buried", "at my limit"],
+      "strong_keywords": ["can't handle it", "cannot handle it", "falling apart"],
+      "risk_note": null
+    },
+    {
+      "id": "grief",
+      "label": "Grief or loss",
+      "short": "Grief",
+      "emoji": "🕯️",
+      "description": "Sadness after a death, breakup, or significant loss.",
+      "empathy": [
+        "I am sorry for your loss. Grief can arrive in waves, and there is no correct timeline.",
+        "That kind of absence can shape ordinary days in unexpected ways."
+      ],
+      "normalise": "Grief is not a problem to solve quickly. It is something to make room for.",
+      "followups": ["duration", "support"],
+      "keywords": ["grief", "grieving", "died", "death", "passed away", "funeral", "lost my", "loss of", "miss them", "miss him", "miss her", "bereavement"],
+      "strong_keywords": ["since they died", "since he died", "since she died"],
+      "risk_note": "If grief makes it hard to care for yourself or lasts a long time without easing, professional support can help."
+    },
+    {
+      "id": "academic_pressure",
+      "label": "Study or work pressure",
+      "short": "Study/work",
+      "emoji": "📚",
+      "description": "Exams, deadlines, grades, job pressure or placement stress.",
+      "empathy": [
+        "Study pressure can take over your whole sense of self if it is not contained.",
+        "That sounds like a lot of pressure, especially if the stakes feel high."
+      ],
+      "normalise": "Your worth is not your marks or your output.",
+      "followups": ["duration", "impact"],
+      "keywords": ["exam", "exams", "study", "studies", "studying", "marks", "grades", "assignment", "assignments", "college", "university", "semester", "syllabus", "placement", "job", "boss", "work pressure", "office"],
+      "strong_keywords": ["failing", "failed my exam", "backlog"],
+      "risk_note": null
+    },
+    {
+      "id": "burnout",
+      "label": "Emotional exhaustion",
+      "short": "Burnout",
+      "emoji": "🕯️",
+      "description": "Feeling drained, detached, or running on empty for a long time.",
+      "empathy": [
+        "That sounds like exhaustion that rest has not fixed. It makes sense that you are running low.",
+        "Carrying this for a long time takes a real toll."
+      ],
+      "normalise": "Burnout is a response to prolonged load, not a lack of resilience.",
+      "followups": ["duration", "energy"],
+      "keywords": ["burnout", "burnt out", "burned out", "emotionally exhausted", "emotionally drained", "drained", "no energy left", "running on empty", "detached", "numb", "can't care anymore"],
+      "strong_keywords": ["completely drained", "nothing left"],
+      "risk_note": "If you are unable to function at work, study or home, consider speaking to a doctor or counsellor."
+    },
+    {
+      "id": "relationship",
+      "label": "Relationship difficulty",
+      "short": "Relationships",
+      "emoji": "💬",
+      "description": "Conflict, breakup, family tension or difficulty with someone close.",
+      "empathy": [
+        "Relationship pain can sit right at the centre of the day.",
+        "That sounds like a difficult thing to carry, especially when the person matters to you."
+      ],
+      "normalise": "Conflict and distance in close relationships are painful, and needing support with them is normal.",
+      "followups": ["duration", "impact"],
+      "keywords": ["breakup", "broke up", "relationship", "girlfriend", "boyfriend", "partner", "husband", "wife", "fight with", "argument with", "family", "parents", "argument", "divorce", "friend hurt me"],
+      "strong_keywords": ["they left me", "he left me", "she left me"],
+      "risk_note": null
+    },
+    {
+      "id": "social_anxiety",
+      "label": "Social anxiety",
+      "short": "Social worry",
+      "emoji": "👥",
+      "description": "Fear of judgement, embarrassment, or social situations.",
+      "empathy": [
+        "Being watched or judged can feel intensely uncomfortable, even when others do not notice.",
+        "That kind of fear can make ordinary interactions feel like a test."
+      ],
+      "normalise": "Social anxiety is common, and it responds to gradual, supported steps.",
+      "followups": ["duration", "impact"],
+      "keywords": ["social anxiety", "people judge", "judged", "embarrass", "embarrassed", "public speaking", "talking to people", "crowd", "social situation", "everyone is looking", "make a fool of myself"],
+      "strong_keywords": ["too anxious to talk", "avoid people"],
+      "risk_note": null
+    }
+  ],
+  "followup_questions": {
+    "duration": {
+      "attribute": "duration",
+      "question": "How long has this been weighing on you?",
+      "help": "There is no wrong answer. This helps me choose gentler suggestions.",
+      "options": [
+        {"label": "A few days", "value": "days"},
+        {"label": "A few weeks", "value": "weeks"},
+        {"label": "A month or more", "value": "months"},
+        {"label": "As long as I can remember", "value": "long_term"}
+      ]
+    },
+    "impact": {
+      "attribute": "impact",
+      "question": "How much is it affecting your daily life?",
+      "help": "This is about how it feels to you, not a score.",
+      "options": [
+        {"label": "Not much right now", "value": "mild"},
+        {"label": "Some days are harder", "value": "moderate"},
+        {"label": "Most days are hard", "value": "severe"},
+        {"label": "I am barely functioning", "value": "severe_plus"}
+      ],
+      "severity_map": {"mild": "low", "moderate": "moderate", "severe": "high", "severe_plus": "high"}
+    },
+    "sleep_hours": {
+      "attribute": "sleep_hours",
+      "question": "Roughly how many hours are you sleeping on a usual night?",
+      "help": "An estimate is fine.",
+      "options": [
+        {"label": "Less than 4", "value": 3},
+        {"label": "4–5 hours", "value": 4.5},
+        {"label": "5–6 hours", "value": 5.5},
+        {"label": "6–8 hours", "value": 7},
+        {"label": "More than 8", "value": 9}
+      ]
+    },
+    "support": {
+      "attribute": "support",
+      "question": "Do you have anyone you can talk to about this?",
+      "help": "This helps me avoid suggesting something that does not fit your situation.",
+      "options": [
+        {"label": "Yes, someone I trust", "value": "has_support"},
+        {"label": "A little, not really", "value": "limited"},
+        {"label": "I feel alone with it", "value": "isolated"}
+      ]
+    },
+    "energy": {
+      "attribute": "energy",
+      "question": "How is your energy right now?",
+      "help": "Suggestions will be sized to what feels possible.",
+      "options": [
+        {"label": "Very low", "value": "low"},
+        {"label": "Some energy", "value": "okay"},
+        {"label": "Fairly okay", "value": "high"}
+      ]
+    }
+  },
+  "severity_phrases": {
+    "high": ["can't function", "cannot function", "can't get out of bed", "cannot get out of bed", "crying every day", "every single day", "most days", "barely functioning", "falling apart", "at my limit", "can't cope", "cannot cope"],
+    "moderate": ["a lot", "often", "most of the time", "really struggling", "hard to focus"],
+    "low": ["a little", "sometimes", "now and then", "mild"]
+  },
+  "impact_phrases": {
+    "severe_plus": ["barely functioning", "can't get out of bed", "cannot get out of bed", "not eating", "stopped eating", "missed work", "missing class", "can't leave the house"],
+    "severe": ["every day", "most days", "crying every day", "can't concentrate", "cannot concentrate", "affecting my work", "affecting my studies"],
+    "moderate": ["some days", "struggling", "hard to focus", "tired all the time"],
+    "mild": ["a little", "sometimes", "now and then", "not too bad"]
+  },
+  "support_phrases": {
+    "has_support": ["have friends", "have family", "someone i trust", "can talk to", "supportive"],
+    "isolated": ["no one", "nobody", "all alone", "completely alone", "no friends", "feel alone"]
+  },
+  "preference_phrases": {
+    "outdoors": ["outside", "nature", "park", "walk", "sunlight", "fresh air"],
+    "social": ["talk to", "friends", "family", "people", "connect"],
+    "quiet": ["quiet", "alone time", "calm", "peace", "silence", "read"],
+    "creative": ["write", "writing", "journal", "draw", "art", "music", "creative"],
+    "physical": ["exercise", "gym", "run", "yoga", "stretch", "move"],
+    "structured": ["plan", "list", "schedule", "routine", "organise"]
+  }
+}

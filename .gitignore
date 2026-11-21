@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Local data (contains personal profiles; never commit)
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# Streamlit secrets and local overrides
+.streamlit/secrets.toml
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
